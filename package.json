@@ -1,0 +1,28 @@
+{
+  "name": "localstack",
+  "version": "1.0.0",
+  "description": "local-test",
+  "main": "./app/server.js",
+  "dependencies": {
+    "aws-sdk": "^2.779.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "helper": "0.0.13",
+    "node-uuid": "^1.4.8",
+    "uuid": "^8.1.0",
+    "webpack": "^5.2.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.1.0"
+  },
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start:dev": "set NODE_ENV=dev && node ./app/server.js",
+    "start:prod": "set NODE_ENV=production && node ./app/server.js"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "rams",
+  "license": "ISC"
+}

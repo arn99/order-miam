@@ -1,0 +1,4 @@
+**/bin
+**/data
+**/docker-compose.yml
+**/node_modules
