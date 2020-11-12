@@ -7,7 +7,7 @@ if (process.env.NODE_ENV.includes("production")) {
   isDev = false;
 }
 // Get a single fruit by id
-router.get('/post/:id', (req, res, next) => {
+router.get('/order/:id', (req, res, next) => {
   console.log(process.env.NODE_ENV)
   console.log(isDev)
   if (isDev) {
@@ -39,14 +39,14 @@ router.get('/post/:id', (req, res, next) => {
             const { Items } = data;
             res.send({
                 success: true,
-                message: 'Loaded posts',
-                posts: Items
+                message: 'Loaded orders',
+                orders: Items
             });
         }
     });
 });
-// Gets all posts
-router.get('/post', (req, res, next) => {
+// Gets all orders
+router.get('/order', (req, res, next) => {
   if (isDev) {
     console.log('isDev');
     AWS.config.update(config.aws_local_config);
@@ -69,14 +69,14 @@ router.get('/post', (req, res, next) => {
       const { Items } = data;
       res.send({
         success: true,
-        message: 'Loaded posts',
-        posts: Items
+        message: 'Loaded orders',
+        orders: Items
       });
     }
   });
-}); // end of router.get(/posts)
+}); // end of router.get(/orders)
 // Add a fruit
-router.post('/post', (req, res, next) => {
+router.post('/order', (req, res, next) => {
   if (isDev) {
     console.log('isDev');
     AWS.config.update(config.aws_local_config);
@@ -84,17 +84,13 @@ router.post('/post', (req, res, next) => {
     console.log('isProd');
     AWS.config.update(config.aws_remote_config);
   }
-    const { title, comment } = req.body;
+    const order = req.body;
     // Not actually unique and can create problems.
-    const id = uuidv4();
+    //const id = uuidv4();
     const docClient = new AWS.DynamoDB.DocumentClient();
     const params = {
       TableName: config.aws_table_name,
-      Item: {
-        id: id,
-        title: title,
-        comment: comment
-      }
+      Item: order
     };
     docClient.put(params, function(err, data) {
       if (err) {
@@ -108,7 +104,7 @@ router.post('/post', (req, res, next) => {
         res.send({
           success: true,
           message: 'Added fruit',
-          post: Items
+          order: Items
         });
       }
     });

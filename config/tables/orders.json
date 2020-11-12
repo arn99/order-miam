@@ -1,5 +1,5 @@
 {
-    "TableName": "posts",
+    "TableName": "orders",
     "KeySchema": [
       {
         "AttributeName": "id",
