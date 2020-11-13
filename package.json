@@ -4,19 +4,21 @@
   "description": "local-test",
   "main": "./app/server.js",
   "dependencies": {
-    "aws-sdk": "^2.779.0",
+    "aws-sdk": "^2.791.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "helper": "0.0.13",
     "node-uuid": "^1.4.8",
     "uuid": "^8.1.0",
     "uuidv4": "^6.2.5",
-    "webpack": "^5.2.1"
+    "webpack": "^5.4.0"
   },
   "devDependencies": {
-    "webpack-cli": "^4.1.0"
+    "webpack-cli": "^4.2.0"
   },
-  "engines": { "node": "10.16.0"},
+  "engines": {
+    "node": "12.0.0"
+  },
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1",
     "start:dev": "set NODE_ENV=dev && node ./app/app.js",
