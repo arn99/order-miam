@@ -9,3 +9,9 @@ aws dynamodb create-table --table-name posts --attribute-definitions AttributeNa
 
 4--- start
 node .\app\server.js
+
+
+change la version de node
+1- nvm list available
+2- nvm install version
+3- nvm use version

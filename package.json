@@ -16,9 +16,6 @@
   "devDependencies": {
     "webpack-cli": "^4.2.0"
   },
-  "engines": {
-    "node": "12.0.0"
-  },
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1",
     "start:dev": "set NODE_ENV=dev && node ./app/app.js",
