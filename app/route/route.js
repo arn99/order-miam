@@ -3,7 +3,10 @@ const router = express.Router();
 const AWS = require('aws-sdk');
 const config = require('../../config/config.js');
 var isDev = true;
-if (process.env.NODE_ENV.includes("production")) {
+/* if (process.env.NODE_ENV.includes("production")) {
+  isDev = false;
+} */
+if (process.env.NODE_ENV == "production") {
   isDev = false;
 }
 // Get a single fruit by id
