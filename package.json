@@ -19,7 +19,8 @@
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1",
     "start:dev": "set NODE_ENV=dev && node ./app/app.js",
-    "start:prod": "set NODE_ENV=production && node ./app/app.js"
+    "start:prod": "set NODE_ENV=production && node ./app/app.js",
+    "start": "set NODE_ENV=production && node ./app/app.js"
   },
   "keywords": [
     "test"
