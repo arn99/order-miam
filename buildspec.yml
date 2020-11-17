@@ -4,6 +4,7 @@ phases:
   pre_build:
     commands:
       - npm install newman --global
+      - npm install newman-reporter-html --global
   build:
     commands:
       - newman run -r html,cli ./newman/order.postman_collection.json -e ./newman/order.postman_environment.json --reporter-html-export report.html

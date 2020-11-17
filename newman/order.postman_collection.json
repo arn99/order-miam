@@ -8,9 +8,9 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:4545/api/order",
+			"name": "http://beantest-env.eba-v9bt7xnm.us-east-1.elasticbeanstalk.com/api/order",
 			"request": {
-				"url": "http://localhost:4545/api/order",
+				"url": "http://beantest-env.eba-v9bt7xnm.us-east-1.elasticbeanstalk.com/api/order",
 				"method": "POST",
 				"header": [
 					{
@@ -28,9 +28,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:4545/api/order",
+			"name": "http://beantest-env.eba-v9bt7xnm.us-east-1.elasticbeanstalk.com/api/order",
 			"request": {
-				"url": "http://localhost:4545/api/order/{{id}}",
+				"url": "http://beantest-env.eba-v9bt7xnm.us-east-1.elasticbeanstalk.com/api/order/{{id}}",
 				"method": "PUT",
 				"header": [
 					{
@@ -48,9 +48,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:4545/api/order",
+			"name": "http://beantest-env.eba-v9bt7xnm.us-east-1.elasticbeanstalk.com/api/order",
 			"request": {
-				"url": "http://localhost:4545/api/order/{{id}}",
+				"url": "http://beantest-env.eba-v9bt7xnm.us-east-1.elasticbeanstalk.com/api/order/{{id}}",
 				"method": "GET",
 				"header": [
 					{
@@ -68,9 +68,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:4545/api/order",
+			"name": "http://beantest-env.eba-v9bt7xnm.us-east-1.elasticbeanstalk.com/api/order",
 			"request": {
-				"url": "http://localhost:4545/api/order",
+				"url": "http://beantest-env.eba-v9bt7xnm.us-east-1.elasticbeanstalk.com/api/order",
 				"method": "GET",
 				"header": [
 					{
