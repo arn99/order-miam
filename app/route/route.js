@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const AWS = require('aws-sdk');
 const config = require('../../config/config.js');
-var isDev = false;
+var isDev = true;
 /* if (process.env.NODE_ENV.includes("production")) {
   isDev = false;
 } */
@@ -108,6 +108,49 @@ router.post('/order', (req, res, next) => {
           success: true,
           message: 'Added fruit',
           order: Items
+        });
+      }
+    });
+  });
+  // UPDATE a fruit
+router.put('/order/:id', (req, res, next) => {
+  if (isDev) {
+    console.log('isDev');
+    AWS.config.update(config.aws_local_config);
+  } else {
+    console.log('isProd');
+    AWS.config.update(config.aws_remote_config);
+  }
+    const state = req.body.etat;
+    const key = req.params.id;
+    // Not actually unique and can create problems.
+    //const id = uuidv4();
+    console.log(key)
+    const docClient = new AWS.DynamoDB.DocumentClient();
+    const params = {
+      TableName: config.aws_table_name,
+      Key: {"id": key.toString()},
+      UpdateExpression: "set etat = :s",
+      ExpressionAttributeValues:{
+        ":s":state.toString(),
+      },
+      
+    ReturnValues:"UPDATED_NEW"
+    };
+    docClient.update(params, function(err, data) {
+      if (err) {
+        res.send({
+          success: false,
+          message: 'Error: Server error'
+        });
+        console.log(err)
+      } else {
+        console.log('data', data);
+        const { Items } = data;
+        res.send({
+          success: true,
+          message: 'UpdateItem succeeded',
+          deliveries: Items
         });
       }
     });
