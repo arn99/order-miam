@@ -1,0 +1,91 @@
+{
+	"variables": [],
+	"info": {
+		"name": "order",
+		"_postman_id": "785ab82b-d578-8f6c-0505-6a67d2a656fb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4545/api/order",
+			"request": {
+				"url": "http://localhost:4545/api/order",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"title\": \"two test\",\n\"comment\":\"two test comment\",\n\"id\":\"122422\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4545/api/order",
+			"request": {
+				"url": "http://localhost:4545/api/order/{{id}}",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n            \"etat\": \"finish\",\n            \"test\": {{id}}\n           \n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4545/api/order",
+			"request": {
+				"url": "http://localhost:4545/api/order/{{id}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n            \"etat\": \"finish\",\n            \"test\": {{id}}\n           \n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4545/api/order",
+			"request": {
+				"url": "http://localhost:4545/api/order",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n            \"etat\": \"finish\",\n            \"test\": {{id}}\n           \n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
