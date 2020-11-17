@@ -7,7 +7,7 @@ phases:
       - npm install newman-reporter-html --global
   build:
     commands:
-      - newman run -r html,cli ./newman/order.postman_collection.json -e ./newman/order.postman_environment.json --reporter-html-export report.html
+      - newman run -r json,junit,html,cli ./newman/order.postman_collection.json -e ./newman/order.postman_environment.json --reporter-html-export report.html
 
 artifacts:
   files:
