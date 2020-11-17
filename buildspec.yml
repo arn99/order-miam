@@ -11,4 +11,5 @@ phases:
 
 artifacts:
   files:
-    - report.html
+    - '**/*'
+  base-directory: 'newman/test' # Location of the reports
