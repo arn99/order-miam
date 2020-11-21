@@ -15,3 +15,14 @@ change la version de node
 1- nvm list available
 2- nvm install version
 3- nvm use version
+
+/*********************/
+how to create aws sqs queue
+ aws --endpoint-url={url} sqs create-queue --queue-name {queue_name}
+
+/*********************/
+1---payment data
+"invoice": {"total_amount": 5000, "description": "Chaussure VANS dernier modèle"},
+	"store": {"name": "Magasin le Choco"},
+	"customer":"rams",
+	"etat":"waiting"

@@ -11,7 +11,8 @@
     "node-uuid": "^1.4.8",
     "uuid": "^8.1.0",
     "uuidv4": "^6.2.5",
-    "webpack": "^5.4.0"
+    "webpack": "^5.4.0",
+    "axios": "^0.21.0"
   },
   "devDependencies": {
     "webpack-cli": "^4.2.0"
