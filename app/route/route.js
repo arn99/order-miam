@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 const axios = require('axios')
 const config = require('../../config/config.js');
 var isDev = true;
-var queueUrl = "http://localhost:4566/000000000000/new-order";
+var queueUrl = "https://sqs.us-east-1.amazonaws.com/073844720199/notify-order";
 
 /* if (process.env.NODE_ENV.includes("production")) {
   isDev = false;
@@ -88,12 +88,36 @@ router.get('/order', (req, res, next) => {
     }
   });
 }); // end of router.get(/orders)
+
 // Add a fruit
 router.post('/order', (req, res, next) => {
     const order = req.body;
     // Not actually unique and can create problems.
     //const id = uuidv4();
     const docClient = new AWS.DynamoDB.DocumentClient();
+    if(order.paymentState == "initiated") {
+      order.invoice = {"total_amount": order.total, "description": "Paiement de Miam"};
+      order.store =  {"name": "Magasin le Choco"};
+      /**payment methode */
+      
+      payment(order).then(reponse => {
+        if(reponse.data.response_code == "00") {
+          order.paymentState = "accept";
+          order.response_text = reponse.data.response_text;
+        } else {
+          /** payment not accept */
+          console.log("yoo");
+        }
+        console.log(order);
+      })
+      .catch(error => {
+        console.log(error)
+        return res.send({
+          success: false,
+          reponse:error
+        })
+      });
+    }
     const params = {
       TableName: config.aws_table_name,
       Item: order
@@ -106,29 +130,19 @@ router.post('/order', (req, res, next) => {
         });
       } else {
         const { Items } = data;
-        /* res.send({
+        res.send({
           success: true,
           message: 'Added fruit',
           order: Items
-        }); */
-        /**payment methode */
-        payment(params.Item).then(reponse => {
-          console.log(`statusCode: ${res.statusCode}`)
-          console.log(reponse.data)
-          return res.send({
-            success: true,
-            reponse:reponse.data
-          })
-        })
-        .catch(error => {
-          console.log(error)
-        });;
+        });
+        console.log("test")
+        console.log(params.Item)
         /**message par sqs */
-        /* sendSQS(params.Item,res).then(data=> {
+        sendSQS(params.Item,res).then(data=> {
           console.log(data);
         }).catch(err=> {
           console.log(err);
-        }) */
+        })
       }
     });
 
@@ -178,12 +192,13 @@ router.put('/order/:id', (req, res, next) => {
       DelaySeconds: 0
     };
 
-    await sqs.sendMessage(params, function(err, data) {
+    sqs.sendMessage(params, function(err, data) {
         if(err) {
-            console.log(err);
+            return err;
         }
         else {
-            console.log(data);
+          console.log(data);
+           return data;
         }
     });
   }

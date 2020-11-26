@@ -1,0 +1,12 @@
+[   {
+        "Create": {
+            "IndexName": "etat-index",
+            "KeySchema": [
+                {"AttributeName": "etat", "KeyType": "HASH"}
+            ],
+            "Projection": {
+                "ProjectionType": "ALL"
+            }
+        }
+    }
+]

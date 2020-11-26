@@ -26,3 +26,11 @@ how to create aws sqs queue
 	"store": {"name": "Magasin le Choco"},
 	"customer":"rams",
 	"etat":"waiting"
+/**************************/
+ add global index
+aws dynamodb update-table --endpoint-url=http://localhost:4566 --table-name orders     --attribute-
+definitions AttributeName=paymentState,AttributeType=S --global-secondary-index-updates     "[{\"Crea
+te\":{\"IndexName\": \"paymentState-index\",\"KeySchema\":[{\"AttributeName\":\"paymentState\",\"KeyT
+ype\":\"HASH\"}], \
+    \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 1, \"WriteCapacityUnits\": 1 },\"Projection\":
+{\"ProjectionType\":\"ALL\"}}}]"
