@@ -34,3 +34,10 @@ te\":{\"IndexName\": \"paymentState-index\",\"KeySchema\":[{\"AttributeName\":\"
 ype\":\"HASH\"}], \
     \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 1, \"WriteCapacityUnits\": 1 },\"Projection\":
 {\"ProjectionType\":\"ALL\"}}}]"
+
+
+/********************/
+using of filter
+ aws --endpoint-url=http://localhost:4566 dynamodb query     --table-name orders     --index-name e
+tat-index     --key-condition-expression "etat = :name"  --filter-expression 'paymentState = :p'    -
+-expression-attribute-values  '{":name":{"S":"finish"},":p":{"S":"yes"}}'

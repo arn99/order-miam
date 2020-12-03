@@ -1,5 +1,5 @@
 const express = require('express');
-const adminRouter = express.Router();
+const deliveryRouter = express.Router();
 const AWS = require('aws-sdk');
 const config = require('../../config/config.js');
 var isDev = true;
@@ -19,7 +19,7 @@ if (isDev) {
 }
 
 //  admin Gets orders
-adminRouter.get('/order', (req, res, next) => {
+deliveryRouter.get('/order', (req, res, next) => {
   
     const docClient = new AWS.DynamoDB.DocumentClient();
     const params = {
@@ -48,4 +48,17 @@ adminRouter.get('/order', (req, res, next) => {
       }
     });
   }); // end of router.get(/orders)  
-module.exports = adminRouter;
+module.exports = deliveryRouter;
+
+
+// params with filter
+/* const params = {
+    TableName: config.aws_table_name,
+    /* KeyConditionExpression: 'paymentState = :v_payment AND etat = :v_etat', */
+    //IndexName: "etat-index",
+    //KeyConditionExpression: 'etat = :v_etat',
+    ///FilterExpression: 'paymentState = :p',
+    //ExpressionAttributeValues: {
+    //  ":v_etat": "waiting",
+    //  ":p":"none"
+    //} 

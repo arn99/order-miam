@@ -1,5 +1,5 @@
 const express = require('express');
-const adminRouter = express.Router();
+const restaurantRouter = express.Router();
 const AWS = require('aws-sdk');
 const config = require('../../config/config.js');
 var isDev = true;
@@ -19,7 +19,7 @@ if (isDev) {
 }
 
 //  admin Gets orders
-adminRouter.get('/order', (req, res, next) => {
+restaurantRouter.get('/order', (req, res, next) => {
   
     const docClient = new AWS.DynamoDB.DocumentClient();
     const params = {
@@ -48,4 +48,4 @@ adminRouter.get('/order', (req, res, next) => {
       }
     });
   }); // end of router.get(/orders)  
-module.exports = adminRouter;
+module.exports = restaurantRouter;
