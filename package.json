@@ -5,14 +5,15 @@
   "main": "./app/server.js",
   "dependencies": {
     "aws-sdk": "^2.791.0",
+    "axios": "^0.21.0",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "helper": "0.0.13",
     "node-uuid": "^1.4.8",
     "uuid": "^8.1.0",
     "uuidv4": "^6.2.5",
-    "webpack": "^5.4.0",
-    "axios": "^0.21.0"
+    "webpack": "^5.4.0"
   },
   "devDependencies": {
     "webpack-cli": "^4.2.0"
