@@ -18,17 +18,21 @@ if (isDev) {
   AWS.config.update(config.aws_remote_config);
 }
 
-//  admin Gets orders
-restaurantRouter.get('/order', (req, res, next) => {
+//  restaurant Gets his orders
+restaurantRouter.get('/order/:id', (req, res, next) => {
   
+    const restaurantId = req.params.id;
     const docClient = new AWS.DynamoDB.DocumentClient();
+    console.log(typeof(restaurantId))
     const params = {
       TableName: config.aws_table_name,
       /* KeyConditionExpression: 'paymentState = :v_payment AND etat = :v_etat', */
       IndexName: "etat-index",
       KeyConditionExpression: 'etat = :v_etat',
+      FilterExpression: 'restoId = :v_resto',
       ExpressionAttributeValues: {
-        ":v_etat": "waiting"
+        ":v_etat": "waiting",
+        ":v_resto": restaurantId
       }
     };
     docClient.query(params, function(err, data) {

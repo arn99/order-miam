@@ -24,11 +24,12 @@ adminRouter.get('/order', (req, res, next) => {
     const docClient = new AWS.DynamoDB.DocumentClient();
     const params = {
       TableName: config.aws_table_name,
-      /* KeyConditionExpression: 'paymentState = :v_payment AND etat = :v_etat', */
-      IndexName: "etat-index",
       KeyConditionExpression: 'etat = :v_etat',
+      /* FilterExpression: 'paymentState = :v_payment', */
+      IndexName: "etat-index",
+      /* KeyConditionExpression: 'etat = :v_etat', */
       ExpressionAttributeValues: {
-        ":v_etat": "waiting"
+        ":v_etat": "waiting",
       }
     };
     docClient.query(params, function(err, data) {
