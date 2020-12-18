@@ -8,5 +8,6 @@ module.exports = {
       accessKeyId: process.env.keyId,
       secretAccessKey: process.env.secret,
       region: 'us-east-1',
-    }
+    },
+    envConfig: false,
   };

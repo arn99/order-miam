@@ -3,21 +3,22 @@ const router = express.Router();
 const AWS = require('aws-sdk');
 const axios = require('axios')
 const config = require('../../config/config.js');
-var isDev = true;
+var isDev = config.envConfig;
 var queueUrl = "https://sqs.us-east-1.amazonaws.com/073844720199/notify-order";
 
 /* if (process.env.NODE_ENV.includes("production")) {
   isDev = false;
 } */
+AWS.config.update(config.aws_remote_config);
 if (process.env.NODE_ENV == "production") {
   isDev = false;
 }
 if (isDev) {
-  console.log('isDev');
+  console.log('dev')
   AWS.config.update(config.aws_local_config);
 } else {
-  console.log('isProd');
   AWS.config.update(config.aws_remote_config);
+  console.log('prod')
 }
 var sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 
@@ -28,15 +29,7 @@ var sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 // Get a single fruit by id
 router.get('/order/:id', (req, res, next) => {
   console.log(process.env.NODE_ENV)
-  console.log(isDev)
-  if (isDev) {
-   
-    console.log('isDev');
-    AWS.config.update(config.aws_local_config);
-  } else {
-    console.log('isProd');
-    AWS.config.update(config.aws_remote_config);
-  }
+
     const id = req.params.id;
     const docClient = new AWS.DynamoDB.DocumentClient();
     const params = {
@@ -97,7 +90,7 @@ router.post('/order', (req, res, next) => {
     const docClient = new AWS.DynamoDB.DocumentClient();
     if(order.paymentState == "initiated") {
       order.invoice = {"total_amount": order.total, "description": "Paiement de Miam"};
-      order.store =  {"name": "Magasin le Choco"};
+      order.store =  {"name": "E-restaurant Miam"};
       /**payment methode */
       
       payment(order).then(reponse => {

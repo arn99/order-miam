@@ -32,7 +32,7 @@ aws dynamodb update-table --endpoint-url=http://localhost:4566 --table-name orde
 definitions AttributeName=paymentState,AttributeType=S --global-secondary-index-updates     "[{\"Crea
 te\":{\"IndexName\": \"paymentState-index\",\"KeySchema\":[{\"AttributeName\":\"paymentState\",\"KeyT
 ype\":\"HASH\"}], \
-    \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 1, \"WriteCapacityUnits\": 1 },\"Projection\":
+    \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 5, \"WriteCapacityUnits\": 5 },\"Projection\":
 {\"ProjectionType\":\"ALL\"}}}]"
 
 
@@ -41,3 +41,7 @@ using of filter
  aws --endpoint-url=http://localhost:4566 dynamodb query     --table-name orders     --index-name e
 tat-index     --key-condition-expression "etat = :name"  --filter-expression 'paymentState = :p'    -
 -expression-attribute-values  '{":name":{"S":"finish"},":p":{"S":"yes"}}'
+
+/********/
+Port 
+      - "4566-4599:4566-4599"

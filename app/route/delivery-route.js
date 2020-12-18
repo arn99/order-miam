@@ -2,7 +2,7 @@ const express = require('express');
 const deliveryRouter = express.Router();
 const AWS = require('aws-sdk');
 const config = require('../../config/config.js');
-var isDev = true;
+var isDev = config.envConfig;
 
 /* if (process.env.NODE_ENV.includes("production")) {
   isDev = false;
