@@ -9,5 +9,5 @@ module.exports = {
       secretAccessKey: process.env.secret,
       region: 'us-east-1',
     },
-    envConfig: false,
+    envConfig: true,
   };

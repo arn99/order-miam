@@ -1,7 +1,7 @@
 const express = require('express');
-const deliveryRouter = express.Router();
 const AWS = require('aws-sdk');
 const config = require('../../config/config.js');
+const deliveryRouter = express.Router();
 var isDev = config.envConfig;
 
 /* if (process.env.NODE_ENV.includes("production")) {
@@ -18,7 +18,7 @@ if (isDev) {
   AWS.config.update(config.aws_remote_config);
 }
 
-//  admin Gets orders
+//  deliverer Gets orders
 deliveryRouter.get('/order', (req, res, next) => {
   
     const docClient = new AWS.DynamoDB.DocumentClient();

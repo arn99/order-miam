@@ -144,9 +144,8 @@ router.post('/order', (req, res, next) => {
 router.put('/order/:id', (req, res, next) => {
     const state = req.body.etat;
     const key = req.params.id;
-    // Not actually unique and can create problems.
-    //const id = uuidv4();
-    console.log(key)
+
+    // updating order from dynamodb
     const docClient = new AWS.DynamoDB.DocumentClient();
     const params = {
       TableName: config.aws_table_name,
