@@ -8,7 +8,7 @@ const router = require('./app/route/route');
 const adminRouter = require('./app/route/admin-route');
 const deliveryRouter = require('./app/route/delivery-route');
 const restaurantRouter = require('./app/route/restaurant-route');
-const frontend = 'https://miam-bf.netlify.app/'
+const frontend = 'https://miam-bf.netlify.app'
 app.use(express.json());
 app.use(cors({origin: frontend}));
 app.use('/api', router);
