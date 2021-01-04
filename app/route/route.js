@@ -133,10 +133,10 @@ router.post('/order', (req, res, next) => {
         /**message par sqs */
         meessage = {
           body: 'Connectez vous pour voir votre nouvelle commande',
-          token: params.Item.restaurant.token
+          // token: params.Item.restaurant.token
         }
-        sendSQS(message,res).then(message=> {
-          console.log(message);
+        sendSQS(meessage,res).then(meessage=> {
+          console.log(meessage);
         }).catch(err=> {
           console.log(err);
         })
